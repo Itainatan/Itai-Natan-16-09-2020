@@ -1,4 +1,4 @@
-## Weather Site 🎶
+## Weather Site ⛅
 
 👉🏽 [Demo](https://ituns.herokuapp.com/)
 
