@@ -15,13 +15,13 @@ export const enqueueSnackbarAction = (notification: any) => {
     }
 }
 
-export const closeSnackbarAction = (key: any) => ({
+export const closeSnackbarAction = (key: string) => ({
     type: CLOSE_SNACKBAR,
     dismissAll: !key, // dismiss all if no key has been defined
     key,
 })
 
-export const removeSnackbar = (key: any) => ({
+export const removeSnackbar = (key: React.ReactText) => ({
     type: REMOVE_SNACKBAR,
     key,
 })

@@ -5,8 +5,15 @@ import { SET_GEO_POSITION_KEY, LOADING_GEO_POSITION_KEY, ERROR_GEO_POSITION_KEY 
 import axios from 'axios'
 
 
+// Interfaces
+interface CoordsType {
+    latitude: number,
+    longitude: number
+}
+
+
 // Actions
-export const geoPositionSearch = (crd: any, isDefaultLocation: boolean) => {
+export const geoPositionSearch = (crd: CoordsType, isDefaultLocation: boolean) => {
 
     return async (dispatch: any) => {
 

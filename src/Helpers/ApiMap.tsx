@@ -5,8 +5,8 @@ const API_KEY = "2fUFLNj1b9OB3I9x6G7AFznAlNCeeKMk"
 
 // Interfaces
 interface propsType {
-    Latitude: string,
-    Longitude: string
+    Latitude: number,
+    Longitude: number
 }
 
 

@@ -25,7 +25,6 @@ export const MenuStyle = styled.div`
     @media screen 
             and (max-device-width: 768px) 
             and (-webkit-min-device-pixel-ratio: 1) { 
-                /* font-size:2.5rem; */
     }
 `
 

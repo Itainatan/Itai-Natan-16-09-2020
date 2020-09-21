@@ -4,13 +4,35 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack'
 import { removeSnackbar } from '../../Store/actions/NotificationAction'
 
+
+// Interfaces
+interface StateType {
+    notifications: Notifications
+}
+
+interface Notifications {
+    notifications: Array<NotificationsType>
+}
+
+interface NotificationsType {
+    key: string,
+    message: React.ReactNode,
+    options: OptionsType,
+    dismissed: boolean
+}
+
+interface OptionsType {
+    onClose: Function
+}
+
+
 let displayed: string[] = []
 
 
-// Consts - Notifier do display the notifications for the app
+// Consts - Notifier display the notifications for the app
 const Notifier = () => {
     const dispatch = useDispatch()
-    const notifications = useSelector((state: any) => state.notifications.notifications || [])
+    const notifications = useSelector((state: StateType) => state.notifications.notifications || [])
     const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
 
@@ -26,7 +48,7 @@ const Notifier = () => {
 
     // Actions
     useEffect(() => {
-        notifications.forEach(({ key, message, options = {}, dismissed = false }: any) => {
+        notifications.forEach(({ key, message, options = { }, dismissed = false }: any) => {
             if (dismissed) {
                 // dismiss snackbar using notistack
                 closeSnackbar(key)
@@ -48,7 +70,7 @@ const Notifier = () => {
                     }
                 },
                 onExited: (_event, myKey) => {
-                    // removen this snackbar from redux store
+                    // remove this snackbar from redux store
                     dispatch(removeSnackbar(myKey))
                     removeDisplayed(myKey)
                 },

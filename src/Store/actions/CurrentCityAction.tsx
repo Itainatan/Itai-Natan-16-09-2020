@@ -33,7 +33,7 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
                 key: new Date().getTime() + Math.random(),
                 variant: 'error',
                 autoHideDuration: 2000,
-                action: (key: any) => (
+                action: (key: string) => (
                     <Button onClick={() => dispatch(closeSnackbar(key))}>dismiss me</Button>
                 ),
             },

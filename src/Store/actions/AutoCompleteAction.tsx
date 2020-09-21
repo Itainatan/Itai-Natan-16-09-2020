@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 // Actions
-export const autoCompleteSearch = (query: any) => async (dispatch: any) => {
+export const autoCompleteSearch = (query: string) => async (dispatch: any) => {
 
     dispatch(autoCompleteSearchLoading(true))
 
@@ -26,7 +26,7 @@ export const autoCompleteSearch = (query: any) => async (dispatch: any) => {
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'error',
-                action: (key: any) => (
+                action: (key: string) => (
                     <Button onClick={() => dispatch(closeSnackbar(key))}>dismiss me</Button>
                 ),
             },

@@ -40,7 +40,6 @@ animation-duration: 2s;
 export const FiveDaysForecastStyle = styled.div`
         display: flex;
         justify-content: space-between;
-        /* margin-top:10rem; */
         @media screen 
         and (max-device-width: 1049px) 
         and (-webkit-min-device-pixel-ratio: 1) { 
@@ -61,7 +60,6 @@ export const DayStyle = styled.div`
     width: 20%;
     margin-right:2rem;
     border-radius: 2rem;
-    /* letter-spacing: 0.1rem; */
     font-weight: 400;
 `
 

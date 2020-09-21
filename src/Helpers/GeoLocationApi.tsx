@@ -4,6 +4,17 @@ import { SET_GEO_LOCATION, LOADING_GEO_LOCATION, ERROR_GEO_LOCATION } from '../S
 import { geoPositionSearch } from '../Store/actions/GeoPositionAction'
 
 
+// Interfaces
+interface PosType {
+    coords: CoordsType
+}
+
+interface CoordsType {
+    latitude: number,
+    longitude: number
+}
+
+
 // Consts
 const GeoLocation = () => {
 
@@ -22,8 +33,8 @@ const GeoLocation = () => {
 
 
     // Funcs
-    function success(pos: any) {
-        var crd = pos.coords
+    function success(pos: PosType) {
+        let crd = pos.coords
 
         store.dispatch({ type: SET_GEO_LOCATION, payload: { Latitude: crd.latitude, Longitude: crd.longitude } })
         store.dispatch({ type: LOADING_GEO_LOCATION, payload: false })

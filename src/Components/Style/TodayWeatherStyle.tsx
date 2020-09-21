@@ -12,6 +12,7 @@ export const IconStyle = styled.span`
     align-items:center;
     transform:translateY(-50%);
 `
+
 export const StickySide = styled.div`
 font-size:4rem;
 position: absolute;
@@ -45,6 +46,7 @@ cursor: pointer;
         }
 }
 `
+
 export const ImageAndStatus = styled.div`
 display:flex;
 align-items:center;
@@ -52,6 +54,7 @@ justify-content: space-between;
 font-size:4rem;
 transform:translateX(5%);
 `
+
 export const Image = styled.img`
 width:10rem;
 @media screen 
@@ -60,6 +63,7 @@ width:10rem;
                 width:7rem;
     }
 `
+
 export const WeatherStatus = styled.span`
     text-transform: uppercase;
     font-size: 3rem;
@@ -71,6 +75,7 @@ export const WeatherStatus = styled.span`
                 font-size: 2rem;
     }
 `
+
 export const CityName = styled.span`
     text-transform: uppercase;
     display: block;
@@ -81,6 +86,7 @@ export const CityName = styled.span`
                 margin-right: 1rem;
     }
 `
+
 export const TodayWeatherStyle = styled.div`
     position:relative;
     display:flex;

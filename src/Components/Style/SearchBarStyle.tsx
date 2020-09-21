@@ -9,6 +9,7 @@ export const SearchInput = styled.input`
     font-size: 2rem;
     padding: 1rem;
 `
+
 export const SpinnerWrapper = styled.span`
     position:absolute;
     right:20px;

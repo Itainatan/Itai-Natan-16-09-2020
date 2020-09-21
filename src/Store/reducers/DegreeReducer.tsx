@@ -2,6 +2,12 @@
 import { CHANGE_DEGREE_TYPE } from '../Types'
 
 
+// Interfaces
+interface ActionType {
+    type: string
+}
+
+
 // Consts
 const initialState = {
     isCelsius: true,
@@ -9,7 +15,7 @@ const initialState = {
 
 
 // Reducers
-export default function (state = initialState, action: any) {
+export default function (state = initialState, action: ActionType) {
     switch (action.type) {
         case CHANGE_DEGREE_TYPE:
             return {

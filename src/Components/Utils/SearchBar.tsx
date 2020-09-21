@@ -10,17 +10,31 @@ import Button from '@material-ui/core/Button'
 import { CitiesListStyle, SpinnerWrapper, SearchInput, CityItem } from '../Style/SearchBarStyle'
 
 
+// Interfaces
+interface StateType {
+    autoComplete: AutoCompleteType
+}
+
+interface AutoCompleteType {
+    loading: boolean
+}
+
+interface CityType {
+    LocalizedName: string
+}
+
+
 // Component - display the input search on the top of the page
 const SearchBar = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
     const [isOpen, setIsOpen] = useState(false)
-    const autoComplete = useSelector((state: any) => state.autoComplete)
+    const autoComplete = useSelector((state: StateType) => state.autoComplete)
     const isLoading = autoComplete.loading
 
 
     // Actions
-    const onSelect = (city: any) => {
+    const onSelect = (city: CityType) => {
         setQuery(city.LocalizedName)
         setIsOpen(false)
         dispatch(currentCityAction(city))
@@ -28,7 +42,7 @@ const SearchBar = () => {
 
 
     // Funcs
-    const onQueryChange = (e: any) => {
+    const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value
 
         if (query === '') {
