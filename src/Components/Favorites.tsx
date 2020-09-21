@@ -62,7 +62,7 @@ const Favorites = () => {
     // Actions
     useEffect(() => {
         favorites.data.length > 0 && dispatch(fetchFavoritesWeather(favorites.data))
-    }, [])
+    }, [dispatch, favorites.data])
 
     return (
         <FavoritesPage>
