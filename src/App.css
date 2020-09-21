@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+ padding:1.5rem 2rem;
+ height: 100vh;
+ background-image: linear-gradient(to right bottom,rgba(61, 185, 216, 0.842), #1863a8);
+ background-size: cover;
+ background-position: top;
+ background-repeat: no-repeat;
+ background-size: cover;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.onoffswitch {
+  position: relative; width: 97px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.onoffswitch-checkbox {
+  display: none;
 }
-
-.App-link {
-  color: #61dafb;
+.onoffswitch-label {
+  display: block; overflow: hidden; cursor: pointer;
+  border: 2px solid #999999; border-radius: 22px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.onoffswitch-inner {
+  display: block; width: 200%; margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block; float: left; width: 50%; height: 34px; padding: 0; line-height: 37px;
+  font-size: 25px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "F°";
+  padding-left: 16px;
+  background-color: #FFFFFF; color: #118CD4;
+}
+.onoffswitch-inner:after {
+  content: "C°";
+  padding-right: 16px;
+  background-color: #FFFFFF; color: #118CD4;
+  text-align: right;
+}
+.onoffswitch-switch {
+  display: block; width: 31px; margin: 3px;
+  background: #FFFFFF;
+  position: absolute; top: 0; bottom: 0;
+  right: 56px;
+  border: 2px solid #999999; border-radius: 22px;
+  transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px; 
 }
