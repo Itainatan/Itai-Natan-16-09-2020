@@ -1,3 +1,4 @@
+// Imports
 import { combineReducers } from "redux"
 import geoLocation from "./GeoLocationReducer"
 import geoPosition from './GeoPositionReducer'
@@ -8,6 +9,7 @@ import notifications from './NotificationReducer'
 import degreeReducer from './DegreeReducer'
 
 
+// Root Reducer
 export default combineReducers({
     geoLocation,
     geoPosition,
@@ -16,4 +18,4 @@ export default combineReducers({
     favorites,
     notifications,
     degreeType: degreeReducer,
-});
+})

@@ -7,10 +7,10 @@ const initialState = {
     data: null,
     loading: false,
     errors: []
-};
+}
 
 
-// Reducer
+// Reducers
 export default function (state = initialState, action: any) {
     switch (action.type) {
         case SET_WEATHER_BY_KEY:

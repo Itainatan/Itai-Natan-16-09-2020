@@ -1,4 +1,4 @@
-// Consts
+// Consts Types
 export const SET_GEO_LOCATION = "SET_GEO_LOCATION"
 export const LOADING_GEO_LOCATION = "LOADING_GEO_LOCATION"
 export const ERROR_GEO_LOCATION = "ERROR_GEO_LOCATION"

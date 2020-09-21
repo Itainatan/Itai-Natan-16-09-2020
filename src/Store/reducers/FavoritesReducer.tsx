@@ -1,17 +1,21 @@
+// Imports 
 import {
     ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SET_FAVORITES, SET_FAVORITES_WEATHER,
     LOADING_FAVORITES_WAETHER, ERROR_FAVORITES_WAETHER
 } from '../Types'
 
 
+// Consts
 const initialState = {
     data: [],
     loading: false,
     errors: []
-};
+}
 
 const setLocalStorage = (favorites: any) => localStorage.setItem('favorites', JSON.stringify(favorites))
 
+
+// Reducers
 export default function (state = initialState, action: any) {
     let newData = []
 

@@ -2,7 +2,7 @@
 import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from '../Types'
 
 
-// Consts
+// Actions
 export const enqueueSnackbarAction = (notification: any) => {
     const key = notification.options && notification.options.key;
 

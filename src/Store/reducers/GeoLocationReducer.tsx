@@ -1,12 +1,17 @@
-import { SET_GEO_LOCATION, LOADING_GEO_LOCATION, ERROR_GEO_LOCATION } from "../Types";
+// Imports
+import { SET_GEO_LOCATION, LOADING_GEO_LOCATION, ERROR_GEO_LOCATION } from "../Types"
 
+
+// Consts
 const initialState = {
     Latitude: null,
     Longitude: null,
     loading: false,
     errors: []
-};
+}
 
+
+// Reducers
 export default function (state = initialState, action: any) {
     switch (action.type) {
         case SET_GEO_LOCATION:

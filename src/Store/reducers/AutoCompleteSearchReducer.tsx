@@ -14,10 +14,10 @@ const initialState = {
     data: null,
     loading: false,
     errors: []
-};
+}
 
 
-// Reducer
+// Reducers
 export default function (state = initialState, action: actionType) {
     switch (action.type) {
         case SET_AUTO_COMPLETE:

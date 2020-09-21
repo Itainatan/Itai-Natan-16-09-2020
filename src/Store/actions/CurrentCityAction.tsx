@@ -11,6 +11,7 @@ import axios from 'axios'
 export const currentCityAction = (city: any) => async (dispatch: any) => {
 
     dispatch(currentCityLoading(true))
+
     try {
         const res = await Promise.all([
             axios.get(weatherByKeyAPI(city.Key)),

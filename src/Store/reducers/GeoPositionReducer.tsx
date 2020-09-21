@@ -1,12 +1,16 @@
+// Imports
 import { SET_GEO_POSITION_KEY, LOADING_GEO_POSITION_KEY, ERROR_GEO_POSITION_KEY } from '../Types'
 
 
+// Consts
 const initialState = {
     data: null,
     loading: false,
     errors: []
 }
 
+
+// Reducers
 export default function (state = initialState, action: any) {
     switch (action.type) {
         case SET_GEO_POSITION_KEY:

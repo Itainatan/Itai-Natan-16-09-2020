@@ -21,7 +21,7 @@ const MenuBar = () => {
     return (
         <MenuStyle>
             <LogoStyle>
-                <img src={require("../../Pictures/appLogo.png")} width="100px" height="100px" />
+                <img alt='appLogo' src={require("../../Pictures/appLogo.png")} width="100px" height="100px" />
             </LogoStyle>
             {pathname !== '/favorites' && <SearchStyle><SearchBar /></SearchStyle>}
             <TempTypeButtom>

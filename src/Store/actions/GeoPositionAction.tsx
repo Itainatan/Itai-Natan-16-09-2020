@@ -7,8 +7,11 @@ import axios from 'axios'
 
 // Actions
 export const geoPositionSearch = (crd: any, isDefaultLocation: boolean) => {
+
     return async (dispatch: any) => {
-        dispatch(geoPositionSearchLoading(true));
+
+        dispatch(geoPositionSearchLoading(true))
+
         try {
             const res = await axios.get(geoPositionSearchAPI({ Latitude: crd.latitude, Longitude: crd.longitude }))
 
@@ -16,12 +19,15 @@ export const geoPositionSearch = (crd: any, isDefaultLocation: boolean) => {
                 type: SET_GEO_POSITION_KEY,
                 payload: isDefaultLocation ? geoPositionMockData_DefaultLocation : res.data
             })
-            dispatch(geoPositionSearchLoading(false));
-            dispatch(currentCityAction((isDefaultLocation ? geoPositionMockData_DefaultLocation : res.data)));
+
+            dispatch(geoPositionSearchLoading(false))
+
+            dispatch(currentCityAction((isDefaultLocation ? geoPositionMockData_DefaultLocation : res.data)))
         }
         catch (err) {
-            dispatch(geoPositionSearchError(err));
-            dispatch(geoPositionSearchLoading(false));
+            dispatch(geoPositionSearchError(err))
+
+            dispatch(geoPositionSearchLoading(false))
         }
     }
 }

@@ -19,7 +19,6 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
             payload: city
         });
 
-
         dispatch(enqueueSnackbar({
             message: `${city.cityInfo.LocalizedName} removed from favorites`,
             options: {
@@ -32,6 +31,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
             },
         }))
     }
+
     else {
         dispatch({
             type: ADD_TO_FAVORITES,
@@ -55,11 +55,13 @@ export const setFavorites = (favorites: any) => {
     return {
         type: SET_FAVORITES,
         payload: favorites
-    };
+    }
 }
 
 export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) => {
+
     dispatch(fetchFavoritesWeatherLoading(true))
+
     try {
         const asyncRequests = []
         for (let favorite of favorites) {
@@ -71,7 +73,7 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
         dispatch({
             type: SET_FAVORITES_WEATHER,
             payload: res.map((favoriteWeather, index) => { return { ...favorites[index], todayWeather: favoriteWeather.data[0] } })
-        });
+        })
         dispatch(fetchFavoritesWeatherLoading(false))
     }
     catch (e) {

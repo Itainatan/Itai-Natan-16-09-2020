@@ -5,7 +5,7 @@ import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from '../Types'
 // Consts
 const defaultState = {
     notifications: [],
-};
+}
 
 
 // Reducer
@@ -22,7 +22,6 @@ export default (state = defaultState, action: any) => {
                     },
                 ],
             }
-
         case CLOSE_SNACKBAR:
             return {
                 ...state,
@@ -32,7 +31,6 @@ export default (state = defaultState, action: any) => {
                         : { ...notification }
                 )),
             }
-
         case REMOVE_SNACKBAR:
             return {
                 ...state,
@@ -40,7 +38,6 @@ export default (state = defaultState, action: any) => {
                     (notification: any) => notification.key !== action.key,
                 ),
             }
-
         default:
             return state
     }
