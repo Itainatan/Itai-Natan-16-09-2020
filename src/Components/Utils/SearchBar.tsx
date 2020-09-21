@@ -1,14 +1,16 @@
 // Imports 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { debounced } from '../../Helpers/Debounced'
 import { currentCityAction } from '../../Store/actions/CurrentCityAction'
 import { SET_AUTO_COMPLETE } from '../../Store/Types'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import styled from 'styled-components'
 import { enqueueSnackbar, closeSnackbar } from '../../Store/actions/NotificationAction'
 import Button from '@material-ui/core/Button'
+import { CitiesListStyle, SpinnerWrapper, SearchInput, CityItem } from '../Style/SearchBarStyle'
 
+
+// Component
 const SearchBar = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
@@ -16,12 +18,16 @@ const SearchBar = () => {
     const autoComplete = useSelector((state: any) => state.autoComplete)
     const isLoading = autoComplete.loading;
 
+
+    // Actions
     const onSelect = (city: any) => {
         setQuery(city.LocalizedName)
         setIsOpen(false)
         dispatch(currentCityAction(city))
     }
 
+
+    // Funcs
     const onQueryChange = (e: any) => {
         const query = e.target.value
 
@@ -31,17 +37,14 @@ const SearchBar = () => {
             dispatch({
                 type: SET_AUTO_COMPLETE,
                 payload: null
-            });
-        }
-
-        else if (/^[a-zA-Z\s]+$/.test(query)) {
+            })
+        } else if (/^[a-zA-Z\s]+$/.test(query)) {
             if (query !== '') {
                 setQuery(query)
                 !isOpen && setIsOpen(true)
                 debounced(query)
             }
-        }
-        else {
+        } else {
             dispatch(enqueueSnackbar(
                 {
                     message: 'Invalid input. accept only english letters',
@@ -62,64 +65,46 @@ const SearchBar = () => {
         }
     }
 
-    return <div onBlur={(e) => { setTimeout(() => setIsOpen(false), 100) }}>
-        <SearchInput placeholder={'Search City'} onChange={onQueryChange} value={query} onFocus={(e) => query !== '' && setIsOpen(true)} />
-        {isLoading ? <SpinnerWrapper><CircularProgress size={20} /></SpinnerWrapper> :
-            isOpen && <CitiesList onSelect={onSelect} />}
-    </div>
+
+    // Rendering
+    return (
+        <div onBlur={() => { setTimeout(() => setIsOpen(false), 100) }}>
+            <SearchInput
+                placeholder={'Search City'}
+                onChange={onQueryChange}
+                value={query}
+                onFocus={() => query !== '' && setIsOpen(true)} />
+            {
+                isLoading ?
+                    <SpinnerWrapper>
+                        <CircularProgress size={20} />
+                    </SpinnerWrapper>
+                    : isOpen && <CitiesList onSelect={onSelect} />
+            }
+        </div>
+    )
 }
 
 export default SearchBar
 
 
+// Component
 const CitiesList = (props: any) => {
     const autoComplete = useSelector((state: any) => state.autoComplete)
 
-    return <CitiesListStyle>{!autoComplete.loading && autoComplete.data && autoComplete.data.map((city: any, index: any) => {
-        return <CityItem key={index} onClick={(e) => props.onSelect(city)}><h3>{city.LocalizedName}</h3></CityItem>
-    })}
-    </CitiesListStyle>
+
+    // Rendering
+    return (
+        <CitiesListStyle>
+            {!autoComplete.loading && autoComplete.data &&
+                autoComplete.data.map((city: any, index: any) => {
+                    return (
+                        <CityItem key={index} onClick={() => props.onSelect(city)}>
+                            <h3>{city.LocalizedName}</h3>
+                        </CityItem>
+                    )
+                })}
+        </CitiesListStyle>
+    )
 }
 
-const SearchInput = styled.input`
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 2rem;
-    padding: 1rem;
-`
-const SpinnerWrapper = styled.span`
-    position:absolute;
-    right:20px;
-    top:12px;
-`
-
-const CitiesListStyle = styled.div`
-    position: absolute;
-    z-index:1000;
-    animation-name: dropDownSlow;
-    animation-duration: 4s;
-    animation-timing-function: ease-out;
-    z-index: 1;
-    @keyframes dropDownSlow {
-        0% {
-            height: 0px;
-        }
-        100% {
-            height:100px;
-        }
-    }
-`
-
-const CityItem = styled.div`
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color:white;
-    width:26.5rem;
-    font-size: 1.5rem;
-    padding: 1rem;
-    cursor: pointer;
-    :hover {
-        background-color: gainsboro;
-    }
-`

@@ -1,5 +1,8 @@
+// Imports
 import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from '../Types'
 
+
+// Consts
 export const enqueueSnackbarAction = (notification: any) => {
     const key = notification.options && notification.options.key;
 
@@ -23,6 +26,6 @@ export const removeSnackbar = (key: any) => ({
     key,
 })
 
-export const enqueueSnackbar = (...args: any) => enqueueSnackbarAction(args)
+export const enqueueSnackbar = (args: any) => enqueueSnackbarAction(args)
 
-export const closeSnackbar = (...args: any) => closeSnackbarAction(args)
+export const closeSnackbar = (args: any) => closeSnackbarAction(args)

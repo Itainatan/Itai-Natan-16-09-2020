@@ -1,7 +1,7 @@
 // Imports
 import React from 'react'
-import Button from '@material-ui/core/Button';
-import { enqueueSnackbar, closeSnackbar } from './NotificationAction';
+import Button from '@material-ui/core/Button'
+import { enqueueSnackbar, closeSnackbar } from './NotificationAction'
 import { fiveDatysForecasts as fiveDatysForecastsAPI, weatherByKey as weatherByKeyAPI } from '../../Helpers/ApiMap'
 import { SET_WEATHER_BY_KEY, LOADING_WEATHER_BY_KEY, ERROR_WEATHER_BY_KEY } from '../Types'
 import axios from 'axios'
@@ -12,7 +12,10 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
 
     dispatch(currentCityLoading(true))
     try {
-        const res = await Promise.all([axios.get(weatherByKeyAPI(city.Key)), axios.get(fiveDatysForecastsAPI(city.Key))])
+        const res = await Promise.all([
+            axios.get(weatherByKeyAPI(city.Key)),
+            axios.get(fiveDatysForecastsAPI(city.Key))
+        ])
         const todayWeather = res[0].data[0]
         const fiveDayaWeather = res[1].data
 
@@ -21,7 +24,6 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
             payload: { todayWeather, fiveDayaWeather, cityInfo: city }
         })
         dispatch(currentCityLoading(false))
-
     }
     catch (err) {
         dispatch(enqueueSnackbar({

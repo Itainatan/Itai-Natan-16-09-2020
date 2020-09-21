@@ -1,14 +1,13 @@
-import React from 'react';
-import styled from 'styled-components'
+// Imports
+import React from 'react'
+import { LoadingText } from '../Style/LoaderStyle'
 
+// Component
 const Loader = () => {
-    return <LoadingText>Loading...</LoadingText>
+    return (
+        <LoadingText>Loading...</LoadingText>
+    )
 }
 
 export default Loader
 
-const LoadingText = styled.span`
-display: inline-block;
-color:#ffffff;
-font-size:3rem;
-`

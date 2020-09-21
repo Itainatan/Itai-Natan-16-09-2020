@@ -1,25 +1,32 @@
+// Imports
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack'
 import { removeSnackbar } from '../../Store/actions/NotificationAction'
 
-let displayed: string[] = [];
+let displayed: string[] = []
 
+
+// Consts
 const Notifier = () => {
-    const dispatch = useDispatch();
-    const notifications = useSelector((state:any) => state.notifications.notifications || []);
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const dispatch = useDispatch()
+    const notifications = useSelector((state: any) => state.notifications.notifications || [])
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
-    const storeDisplayed = (id:any) => {
-        displayed = [...displayed, id];
-    };
 
-    const removeDisplayed = (id:any) => {
-        displayed = [...displayed.filter(key => id !== key)];
-    };
+    // Funcs
+    const storeDisplayed = (id: any) => {
+        displayed = [...displayed, id]
+    }
 
+    const removeDisplayed = (id: any) => {
+        displayed = [...displayed.filter(key => id !== key)]
+    }
+
+
+    // Actions
     useEffect(() => {
-        notifications.forEach(({ key, message, options = {}, dismissed = false }:any) => {
+        notifications.forEach(({ key, message, options = {}, dismissed = false }: any) => {
             if (dismissed) {
                 // dismiss snackbar using notistack
                 closeSnackbar(key);
@@ -55,4 +62,4 @@ const Notifier = () => {
     return null
 }
 
-export default Notifier;
+export default Notifier
