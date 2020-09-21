@@ -7,7 +7,7 @@ import { removeSnackbar } from '../../Store/actions/NotificationAction'
 let displayed: string[] = []
 
 
-// Consts
+// Consts - Notifier do display the notifications for the app
 const Notifier = () => {
     const dispatch = useDispatch()
     const notifications = useSelector((state: any) => state.notifications.notifications || [])
@@ -15,11 +15,11 @@ const Notifier = () => {
 
 
     // Funcs
-    const storeDisplayed = (id: any) => {
+    const storeDisplayed = (id: string) => {
         displayed = [...displayed, id]
     }
 
-    const removeDisplayed = (id: any) => {
+    const removeDisplayed = (id: React.ReactText) => {
         displayed = [...displayed.filter(key => id !== key)]
     }
 
@@ -29,7 +29,7 @@ const Notifier = () => {
         notifications.forEach(({ key, message, options = {}, dismissed = false }: any) => {
             if (dismissed) {
                 // dismiss snackbar using notistack
-                closeSnackbar(key);
+                closeSnackbar(key)
                 return
             }
 
@@ -47,7 +47,7 @@ const Notifier = () => {
                         options.onClose(event, reason, myKey)
                     }
                 },
-                onExited: (event, myKey) => {
+                onExited: (_event, myKey) => {
                     // removen this snackbar from redux store
                     dispatch(removeSnackbar(myKey))
                     removeDisplayed(myKey)
@@ -55,7 +55,7 @@ const Notifier = () => {
             })
 
             // keep track of snackbars that we've displayed
-            storeDisplayed(key);
+            storeDisplayed(key)
         })
     }, [notifications, closeSnackbar, enqueueSnackbar, dispatch])
 

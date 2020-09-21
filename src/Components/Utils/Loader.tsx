@@ -2,7 +2,7 @@
 import React from 'react'
 import { LoadingText } from '../Style/LoaderStyle'
 
-// Component
+// Component- use for spinner loading
 const Loader = () => {
     return (
         <LoadingText>Loading...</LoadingText>

@@ -11,7 +11,7 @@ const GeoLocation = () => {
         enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0
-    };
+    }
 
     //Actions
     store.dispatch(geoPositionSearch({ latitude: 32.0853, longitude: 34.7818 }, true)) // default Tel aviv
@@ -33,7 +33,7 @@ const GeoLocation = () => {
     function error(err: any) {
         store.dispatch({ type: ERROR_GEO_LOCATION, payload: err.message })
         store.dispatch({ type: LOADING_GEO_LOCATION, payload: false })
-        console.warn(`ERROR(${err.code}): ${err.message}`);
+        console.warn(`ERROR(${err.code}): ${err.message}`)
     }
 
 

@@ -15,7 +15,7 @@ export default function (state = initialState, action: any) {
             return {
                 ...state,
                 isCelsius: !state.isCelsius,
-            };
+            }
         default:
             return state
     }

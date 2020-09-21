@@ -10,13 +10,13 @@ import Button from '@material-ui/core/Button'
 import { CitiesListStyle, SpinnerWrapper, SearchInput, CityItem } from '../Style/SearchBarStyle'
 
 
-// Component
+// Component - display the input search on the top of the page
 const SearchBar = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
     const [isOpen, setIsOpen] = useState(false)
     const autoComplete = useSelector((state: any) => state.autoComplete)
-    const isLoading = autoComplete.loading;
+    const isLoading = autoComplete.loading
 
 
     // Actions
@@ -39,11 +39,9 @@ const SearchBar = () => {
                 payload: null
             })
         } else if (/^[a-zA-Z\s]+$/.test(query)) {
-            if (query !== '') {
-                setQuery(query)
-                !isOpen && setIsOpen(true)
-                debounced(query)
-            }
+            setQuery(query)
+            !isOpen && setIsOpen(true)
+            debounced(query)
         } else {
             dispatch(enqueueSnackbar(
                 {

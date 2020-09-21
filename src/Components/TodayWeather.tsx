@@ -12,12 +12,55 @@ import {
 } from './Style/TodayWeatherStyle'
 
 
+interface PropsType {
+    currentCity: CurrentCityType,
+    favorites: Array<FavoriteType>
+}
+
+interface StateType {
+    degreeType: DegreeType
+}
+
+interface CurrentCityType {
+    todayWeather: TodayWeatherrType,
+    cityInfo: CityInfoType
+}
+
+interface TodayWeatherrType {
+    Temperature: TemperatureType,
+    WeatherText: string,
+    WeatherIcon: number
+}
+
+interface TemperatureType {
+    Metric: MetricType
+}
+
+interface MetricType {
+    Value: number
+}
+
+interface FavoriteType {
+    cityInfo: CityInfoType
+}
+
+interface CityInfoType {
+    Key: string,
+    LocalizedName: string
+}
+
+interface DegreeType {
+    isCelsius: boolean
+}
+
+
+
 // Component
-const TodayWeather = ({ currentCity, favorites }: any) => {
+const TodayWeather = ({ currentCity, favorites }: PropsType) => {
     const dispatch = useDispatch()
-    const isCelsius = useSelector((state: any) => state.degreeType.isCelsius)
+    const isCelsius = useSelector((state: StateType) => state.degreeType.isCelsius)
     const isFavorite = currentCity && favorites.length > 0 &&
-        favorites.find((favorite: any) => favorite.cityInfo.Key === currentCity.cityInfo.Key)
+        favorites.find((favorite: FavoriteType) => favorite.cityInfo.Key === currentCity.cityInfo.Key)
 
 
     // Actions

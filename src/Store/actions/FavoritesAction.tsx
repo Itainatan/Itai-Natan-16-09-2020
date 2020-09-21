@@ -3,7 +3,7 @@ import { weatherByKey as weatherByKeyAPI } from '../../Helpers/ApiMap'
 import axios from 'axios'
 import { enqueueSnackbar, closeSnackbar } from './NotificationAction'
 import React from 'react'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 import {
     ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SET_FAVORITES, LOADING_FAVORITES_WAETHER,
     SET_FAVORITES_WEATHER, ERROR_FAVORITES_WAETHER
@@ -17,7 +17,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
         dispatch({
             type: REMOVE_FROM_FAVORITES,
             payload: city
-        });
+        })
 
         dispatch(enqueueSnackbar({
             message: `${city.cityInfo.LocalizedName} removed from favorites`,
@@ -36,7 +36,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
         dispatch({
             type: ADD_TO_FAVORITES,
             payload: city
-        });
+        })
         dispatch(enqueueSnackbar({
             message: `${city.cityInfo.LocalizedName} added to favorites`,
             options: {
@@ -49,7 +49,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
             },
         }))
     }
-};
+}
 
 export const setFavorites = (favorites: any) => {
     return {
@@ -65,11 +65,9 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
     try {
         const asyncRequests = []
         for (let favorite of favorites) {
-            console.log(favorite.cityInfo.Key)
             asyncRequests.push(axios.get(weatherByKeyAPI(favorite.cityInfo.Key)))
         }
         const res = await Promise.all(asyncRequests)
-        console.log(res)
         dispatch({
             type: SET_FAVORITES_WEATHER,
             payload: res.map((favoriteWeather, index) => { return { ...favorites[index], todayWeather: favoriteWeather.data[0] } })

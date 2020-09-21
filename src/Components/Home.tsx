@@ -1,14 +1,25 @@
 // Imports
-import React from 'react';
+import React from 'react'
 import { useSelector } from 'react-redux'
 import CurrentCityWeather from './CurrentCityWeather'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { SpinnerWrapper, SpinnerText } from './Style/HomeStyle'
 
 
+// Interfaces
+interface StateType {
+    currentCity: CurrentCityType,
+}
+
+interface CurrentCityType {
+    data: Object,
+    loading: boolean
+}
+
+
 // Component
 const Home = () => {
-    const currentCity = useSelector((state: any) => state.currentCity)
+    const currentCity = useSelector((state: StateType) => state.currentCity)
 
 
     // Rendering

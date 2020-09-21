@@ -5,7 +5,7 @@ import rootReducer from "./reducers/RootReducer"
 
 
 // Consts - Store
-const initialState = {};
+const initialState = {}
 
 export const composeEnhancers = (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ?
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
@@ -22,4 +22,4 @@ const store = createStore(
     )
 )
 
-export default store;
+export default store

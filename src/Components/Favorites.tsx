@@ -15,11 +15,47 @@ import {
 } from './Style/FavoritesStyle'
 
 
-// Component
+// Interfaces
+interface StateType {
+    degreeType: DegreeType,
+    favorites: FavoritesType
+}
+
+interface FavoritesType {
+    data: Array<Object>,
+    loading: boolean,
+    cityInfo: CityInfoType,
+    todayWeather: TodayWeatherType
+}
+
+interface DegreeType {
+    isCelsius: boolean
+}
+
+interface CityInfoType {
+    LocalizedName: string
+}
+
+interface TodayWeatherType {
+    Temperature: TemperatureType,
+    WeatherText: string,
+    WeatherIcon: number
+}
+
+interface TemperatureType {
+    Metric: MetricType
+}
+
+interface MetricType {
+    Value: number
+}
+
+
+// Component - display the favorites page
 const Favorites = () => {
     const dispatch = useDispatch()
-    const favorites = useSelector((state: any) => state.favorites)
-    const isCelsius = useSelector((state: any) => state.degreeType.isCelsius)
+    const favorites = useSelector((state: StateType) => state.favorites)
+    const isCelsius = useSelector((state: StateType) => state.degreeType.isCelsius)
     const history = useHistory()
 
 
@@ -42,10 +78,13 @@ const Favorites = () => {
                         </SpinnerWrapper>
                         :
                         <FavoritesWrapper>
-                            {favorites.data.map((favorite: any, index: any) => {
+                            {favorites.data.map((favorite: any, index: number) => {
                                 return (
                                     <FavoriteItemWrapper key={index}>
-                                        <FavoriteItem onClick={() => { dispatch(currentCityAction(favorite.cityInfo)); history.push('/') }}>
+                                        <FavoriteItem onClick={() => {
+                                            dispatch(currentCityAction(favorite.cityInfo))
+                                            history.push('/')
+                                        }}>
                                             <CityAndTempStyle>
                                                 <FavoriteTitle>{favorite.cityInfo.LocalizedName}</FavoriteTitle>
                                                 {isCelsius && <span>{Math.round(favorite.todayWeather.Temperature.Metric.Value)}°C</span>}
@@ -63,11 +102,12 @@ const Favorites = () => {
                                                 />
                                             </ImageAndStatus>
                                         </FavoriteItem>
-                                        {/* <Button onClick={() => dispatch(favoritesAction(favorite, false))}
-                                        variant="contained"
-                                        color="secondary"
-                                        fontSize="inherit"
-                                        startIcon={<DeleteIcon />}>Remove from Favorites</Button> */}
+                                        <Button onClick={() => dispatch(favoritesAction(favorite, false))}
+                                            variant="contained"
+                                            color="secondary"
+                                            startIcon={<DeleteIcon />}>
+                                            Remove from Favorites
+                                        </Button>
                                     </FavoriteItemWrapper>
                                 )
                             })}
