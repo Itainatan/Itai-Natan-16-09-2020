@@ -7,7 +7,8 @@ import { SET_AUTO_COMPLETE } from '../../Store/Types'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { enqueueSnackbar, closeSnackbar } from '../../Store/actions/NotificationAction'
 import Button from '@material-ui/core/Button'
-import { CitiesListStyle, SpinnerWrapper, SearchInput, CityItem } from '../Style/SearchBarStyle'
+import { SpinnerWrapper, SearchInput } from '../Style/SearchBarStyle'
+import CitiesList from './CitiesList'
 
 
 // Interfaces
@@ -24,7 +25,7 @@ interface CityType {
 }
 
 
-// Component - display the input search on the top of the page
+// Component - display the input search on the top of the app
 const SearchBar = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
@@ -86,12 +87,11 @@ const SearchBar = () => {
                 onChange={onQueryChange}
                 value={query}
                 onFocus={() => query !== '' && setIsOpen(true)} />
-            {
-                isLoading ?
-                    <SpinnerWrapper>
-                        <CircularProgress size={20} />
-                    </SpinnerWrapper>
-                    : isOpen && <CitiesList onSelect={onSelect} />
+            {isLoading ?
+                <SpinnerWrapper>
+                    <CircularProgress size={20} />
+                </SpinnerWrapper>
+                : isOpen && <CitiesList onSelect={onSelect} />
             }
         </div>
     )
@@ -100,23 +100,5 @@ const SearchBar = () => {
 export default SearchBar
 
 
-// Component
-const CitiesList = (props: any) => {
-    const autoComplete = useSelector((state: any) => state.autoComplete)
 
-
-    // Rendering
-    return (
-        <CitiesListStyle>
-            {!autoComplete.loading && autoComplete.data &&
-                autoComplete.data.map((city: any, index: number) => {
-                    return (
-                        <CityItem key={index} onClick={() => props.onSelect(city)}>
-                            <h3>{city.LocalizedName}</h3>
-                        </CityItem>
-                    )
-                })}
-        </CitiesListStyle>
-    )
-}
 

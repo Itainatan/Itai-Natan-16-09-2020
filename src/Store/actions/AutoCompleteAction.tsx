@@ -14,10 +14,12 @@ export const autoCompleteSearch = (query: string) => async (dispatch: any) => {
 
     try {
         const res = await axios.get(autoCompleteSearchAPI(query))
+
         dispatch({
             type: SET_AUTO_COMPLETE,
             payload: res.data
         })
+
         dispatch(autoCompleteSearchLoading(false))
     }
     catch (err) {
@@ -31,7 +33,9 @@ export const autoCompleteSearch = (query: string) => async (dispatch: any) => {
                 ),
             },
         }))
+
         dispatch(autoCompleteSearchError(err))
+
         dispatch(autoCompleteSearchLoading(false))
     }
 }
@@ -43,7 +47,7 @@ export const autoCompleteSearchLoading = (isLoading: boolean) => {
     }
 }
 
-export const autoCompleteSearchError = (err: object) => (dispatch: object) => {
+export const autoCompleteSearchError = (err: object) => (_dispatch: object) => {
     return {
         type: ERROR_AUTO_COMPLETE,
         payload: err

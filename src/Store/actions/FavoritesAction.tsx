@@ -11,7 +11,7 @@ import {
 
 
 // Actions
-export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
+export const favoritesAction = (city: any, add: boolean) => (dispatch: any) => {
 
     if (!add) {
         dispatch({
@@ -37,6 +37,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
             type: ADD_TO_FAVORITES,
             payload: city
         })
+
         dispatch(enqueueSnackbar({
             message: `${city.cityInfo.LocalizedName} added to favorites`,
             options: {
@@ -64,14 +65,18 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
 
     try {
         const asyncRequests = []
+
         for (let favorite of favorites) {
             asyncRequests.push(axios.get(weatherByKeyAPI(favorite.cityInfo.Key)))
         }
+
         const res = await Promise.all(asyncRequests)
+
         dispatch({
             type: SET_FAVORITES_WEATHER,
             payload: res.map((favoriteWeather, index) => { return { ...favorites[index], todayWeather: favoriteWeather.data[0] } })
         })
+        
         dispatch(fetchFavoritesWeatherLoading(false))
     }
     catch (e) {

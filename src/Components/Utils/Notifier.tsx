@@ -29,7 +29,7 @@ interface OptionsType {
 let displayed: string[] = []
 
 
-// Consts - Notifier display the notifications for the app
+// Consts - display the notifications for the app
 const Notifier = () => {
     const dispatch = useDispatch()
     const notifications = useSelector((state: StateType) => state.notifications.notifications || [])

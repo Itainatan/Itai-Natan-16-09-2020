@@ -45,7 +45,7 @@ interface MaxMinType {
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 
-// Component
+// Component - display on the bottom of the app the five days weather based locaion
 const FiveDaysForecast = (props: PropsType) => {
     const { currentCity } = props
     const isCelsius = useSelector((state: StateType) => state.degreeType.isCelsius)

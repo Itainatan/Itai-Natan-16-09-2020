@@ -15,7 +15,7 @@ interface CoordsType {
 }
 
 
-// Consts
+// func - to get the user permission to locate the exact position
 const GeoLocation = () => {
 
     const options = {

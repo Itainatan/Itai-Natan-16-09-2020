@@ -55,10 +55,11 @@ interface TodayWeatherrType {
 }
 
 interface TemperatureType {
-    Metric: MetricType
+    Metric: MetricImperialType,
+    Imperial: MetricImperialType
 }
 
-interface MetricType {
+interface MetricImperialType {
     Value: number
 }
 

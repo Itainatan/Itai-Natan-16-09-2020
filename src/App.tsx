@@ -29,7 +29,6 @@ if (localStorage.favorites) {
 // Component
 function App() {
 
-
   // Rendering
   return (
     <Provider store={store}>

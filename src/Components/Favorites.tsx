@@ -6,7 +6,6 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { currentCityAction } from '../Store/actions/CurrentCityAction'
-import { convertToF } from '../Helpers/Converts'
 import { SpinnerWrapper, SpinnerText } from './Style/HomeStyle'
 import { useHistory } from 'react-router-dom'
 import {
@@ -91,9 +90,8 @@ const Favorites = () => {
                                             <CityAndTempStyle>
                                                 <FavoriteTitle>{favorite.cityInfo.LocalizedName}</FavoriteTitle>
                                                 {isCelsius && <span>{Math.round(favorite.todayWeather.Temperature.Metric.Value)}°C</span>}
-                                                {!isCelsius && <span>{convertToF(favorite.todayWeather.Temperature.Metric.Value)}°F</span>}
+                                                {!isCelsius && <span>{favorite.todayWeather.Temperature.Imperial.Value}°F</span>}
                                             </CityAndTempStyle>
-
                                             <ImageAndStatus>
                                                 <span>{favorite.todayWeather.WeatherText}</span>
                                                 <Image

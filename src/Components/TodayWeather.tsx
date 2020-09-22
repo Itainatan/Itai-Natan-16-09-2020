@@ -1,7 +1,6 @@
 // Imports
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { convertToF } from '../Helpers/Converts'
 import { useDispatch } from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
@@ -33,10 +32,11 @@ interface TodayWeatherrType {
 }
 
 interface TemperatureType {
-    Metric: MetricType
+    Metric: MetricImperialType,
+    Imperial: MetricImperialType
 }
 
-interface MetricType {
+interface MetricImperialType {
     Value: number
 }
 
@@ -55,7 +55,7 @@ interface DegreeType {
 
 
 
-// Component
+// Component - diplay the info about the city, the favorite button and the today weather
 const TodayWeather = ({ currentCity, favorites }: PropsType) => {
     const dispatch = useDispatch()
     const isCelsius = useSelector((state: StateType) => state.degreeType.isCelsius)
@@ -73,7 +73,7 @@ const TodayWeather = ({ currentCity, favorites }: PropsType) => {
             <CityAndTempStyle>
                 <CityName>{currentCity && currentCity.cityInfo && currentCity.cityInfo.LocalizedName}</CityName>
                 {isCelsius && <div>{Math.round(currentCity.todayWeather.Temperature.Metric.Value)}°C</div>}
-                {!isCelsius && <div>{convertToF(currentCity.todayWeather.Temperature.Metric.Value)}°F</div>}
+                {!isCelsius && <div>{currentCity.todayWeather.Temperature.Imperial.Value}°F</div>}
             </CityAndTempStyle>
             <StickySide>
                 <IconStyle>

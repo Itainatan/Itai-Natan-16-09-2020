@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { MenuStyle, LogoStyle, SearchStyle, TempTypeButtom, LinkStyle } from '../Style/MenuBarStyle'
 
 
-// Component
+// Component - display the logo, search bar, the radio button and the links of the app
 const MenuBar = () => {
     const dispatch = useDispatch()
     const { pathname } = useLocation()

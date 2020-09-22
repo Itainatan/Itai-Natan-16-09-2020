@@ -1,6 +1,6 @@
 // Consts
 const BASE_URL = "https://dataservice.accuweather.com"
-const API_KEY = "lpaF8dfWGrM9XzI2cblh0BRWp6qmnT9g"
+const API_KEY = "lriSh0MgYPuwlv7Hf3Zy1OJ0XzO3ZezC"
 
 
 // Interfaces
@@ -10,6 +10,7 @@ interface propsType {
 }
 
 
+// Routes
 export const geoPositionSearch = ({ Latitude, Longitude }: propsType) => {
     return `${BASE_URL}/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${Latitude},${Longitude}`
 }

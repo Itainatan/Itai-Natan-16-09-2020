@@ -17,7 +17,7 @@ interface CurrentCityType {
 }
 
 
-// Component
+// Component - display the home page of the app
 const Home = () => {
     const currentCity = useSelector((state: StateType) => state.currentCity)
 

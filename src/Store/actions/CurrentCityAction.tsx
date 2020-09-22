@@ -17,6 +17,7 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
             axios.get(weatherByKeyAPI(city.Key)),
             axios.get(fiveDatysForecastsAPI(city.Key))
         ])
+
         const todayWeather = res[0].data[0]
         const fiveDayaWeather = res[1].data
 
@@ -24,6 +25,7 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
             type: SET_WEATHER_BY_KEY,
             payload: { todayWeather, fiveDayaWeather, cityInfo: city }
         })
+
         dispatch(currentCityLoading(false))
     }
     catch (err) {
@@ -38,7 +40,9 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
                 ),
             },
         }))
+
         dispatch(currentCityError(err))
+        
         dispatch(currentCityLoading(false))
     }
 }
