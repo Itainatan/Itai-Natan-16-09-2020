@@ -39,7 +39,7 @@ export const geoPositionSearch = (crd: CoordsType, isDefaultLocation: boolean) =
     }
 }
 
-export const geoPositionSearchLoading = (isLoading: any) => {
+export const geoPositionSearchLoading = (isLoading: boolean) => {
     return {
         type: LOADING_GEO_POSITION_KEY,
         payload: isLoading

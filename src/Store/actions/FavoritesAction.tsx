@@ -25,7 +25,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
                 key: new Date().getTime() + Math.random(),
                 variant: 'warning',
                 autoHideDuration: 2000,
-                action: (key: any) => (
+                action: (key: string) => (
                     <Button onClick={() => dispatch(closeSnackbar(key))}>dismiss me</Button>
                 ),
             },
@@ -43,7 +43,7 @@ export const favoritesAction = (city: any, add: any) => (dispatch: any) => {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
                 autoHideDuration: 2000,
-                action: (key: any) => (
+                action: (key: string) => (
                     <Button onClick={() => dispatch(closeSnackbar(key))}>dismiss me</Button>
                 ),
             },
@@ -81,7 +81,7 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
                 key: new Date().getTime() + Math.random(),
                 variant: 'error',
                 autoHideDuration: 2000,
-                action: (key: any) => (
+                action: (key: string) => (
                     <Button onClick={() => dispatch(closeSnackbar(key))}>dismiss me</Button>
                 ),
             },
@@ -91,7 +91,7 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
     }
 }
 
-export const fetchFavoritesWeatherLoading = (isLoading: any) => {
+export const fetchFavoritesWeatherLoading = (isLoading: boolean) => {
     return {
         type: LOADING_FAVORITES_WAETHER,
         payload: isLoading

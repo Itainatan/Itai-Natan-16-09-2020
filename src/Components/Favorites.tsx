@@ -62,8 +62,11 @@ const Favorites = () => {
     // Actions
     useEffect(() => {
         favorites.data.length > 0 && dispatch(fetchFavoritesWeather(favorites.data))
-    }, [dispatch, favorites.data])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
+
+    // Rendering
     return (
         <FavoritesPage>
             <PageHeadline>Favorites</PageHeadline>

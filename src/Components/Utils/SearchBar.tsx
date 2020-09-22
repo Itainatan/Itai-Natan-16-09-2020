@@ -64,7 +64,7 @@ const SearchBar = () => {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
                         autoHideDuration: 5000,
-                        action: (key: any) => (
+                        action: (key: string) => (
                             <Button onClick={() => dispatch(closeSnackbar(key))}>Close</Button>
                         ),
                         anchorOrigin: {
@@ -109,7 +109,7 @@ const CitiesList = (props: any) => {
     return (
         <CitiesListStyle>
             {!autoComplete.loading && autoComplete.data &&
-                autoComplete.data.map((city: any, index: any) => {
+                autoComplete.data.map((city: any, index: number) => {
                     return (
                         <CityItem key={index} onClick={() => props.onSelect(city)}>
                             <h3>{city.LocalizedName}</h3>

@@ -2,6 +2,13 @@
 import { SET_GEO_POSITION_KEY, LOADING_GEO_POSITION_KEY, ERROR_GEO_POSITION_KEY } from '../Types'
 
 
+// Interface 
+interface ActionType {
+    type: string,
+    payload: boolean | Object
+}
+
+
 // Consts
 const initialState = {
     data: null,
@@ -11,7 +18,7 @@ const initialState = {
 
 
 // Reducers
-export default function (state = initialState, action: any) {
+export default function (state = initialState, action: ActionType) {
     switch (action.type) {
         case SET_GEO_POSITION_KEY:
             return {

@@ -43,14 +43,14 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
     }
 }
 
-export const currentCityLoading = (isLoading: any) => {
+export const currentCityLoading = (isLoading: boolean) => {
     return {
         type: LOADING_WEATHER_BY_KEY,
         payload: isLoading
     }
 }
 
-export const currentCityError = (err: any) => (dispatch: any) => {
+export const currentCityError = (err: any) => (_dispatch: any) => {
     return {
         type: ERROR_WEATHER_BY_KEY,
         payload: err
