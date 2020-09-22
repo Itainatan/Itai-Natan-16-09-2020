@@ -54,7 +54,7 @@ export const currentCityLoading = (isLoading: boolean) => {
     }
 }
 
-export const currentCityError = (err: any) => (_dispatch: any) => {
+export const currentCityError = (err: Object) => (_dispatch: any) => {
     return {
         type: ERROR_WEATHER_BY_KEY,
         payload: err

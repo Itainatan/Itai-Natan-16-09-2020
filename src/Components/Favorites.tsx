@@ -20,15 +20,18 @@ interface StateType {
     favorites: FavoritesType
 }
 
-interface FavoritesType {
-    data: Array<Object>,
-    loading: boolean,
-    cityInfo: CityInfoType,
-    todayWeather: TodayWeatherType
-}
-
 interface DegreeType {
     isCelsius: boolean
+}
+
+interface FavoritesType {
+    data: Array<FavoriteType>,
+    loading: boolean
+}
+
+interface FavoriteType {
+    cityInfo: CityInfoType,
+    todayWeather: TodayWeatherType
 }
 
 interface CityInfoType {
@@ -42,10 +45,11 @@ interface TodayWeatherType {
 }
 
 interface TemperatureType {
-    Metric: MetricType
+    Metric: MetricImperialType,
+    Imperial: MetricImperialType
 }
 
-interface MetricType {
+interface MetricImperialType {
     Value: number
 }
 
@@ -80,7 +84,7 @@ const Favorites = () => {
                         </SpinnerWrapper>
                         :
                         <FavoritesWrapper>
-                            {favorites.data.map((favorite: any, index: number) => {
+                            {favorites.data.map((favorite: FavoriteType, index: number) => {
                                 return (
                                     <FavoriteItemWrapper key={index}>
                                         <FavoriteItem onClick={() => {

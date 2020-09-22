@@ -2,6 +2,20 @@
 import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from '../Types'
 
 
+// Interfaces
+interface ActionType {
+    type: string,
+    dismissAll: boolean,
+    key: string,
+    notification: NotificationType
+}
+
+interface NotificationType {
+    key: string,
+    options: Object
+}
+
+
 // Consts
 const defaultState = {
     notifications: [],
@@ -9,23 +23,21 @@ const defaultState = {
 
 
 // Reducer
-export default (state = defaultState, action: any) => {
+export default (state = defaultState, action: ActionType) => {
     switch (action.type) {
         case ENQUEUE_SNACKBAR:
+            const notification = Object.assign({ key: action.key }, action.notification)
             return {
                 ...state,
                 notifications: [
                     ...state.notifications,
-                    {
-                        key: action.key,
-                        ...action.notification,
-                    },
+                    notification
                 ],
             }
         case CLOSE_SNACKBAR:
             return {
                 ...state,
-                notifications: state.notifications.map((notification: any) => (
+                notifications: state.notifications.map((notification: NotificationType) => (
                     (action.dismissAll || notification.key === action.key)
                         ? { ...notification, dismissed: true }
                         : { ...notification }
@@ -35,7 +47,7 @@ export default (state = defaultState, action: any) => {
             return {
                 ...state,
                 notifications: state.notifications.filter(
-                    (notification: any) => notification.key !== action.key,
+                    (notification: NotificationType) => notification.key !== action.key,
                 ),
             }
         default:

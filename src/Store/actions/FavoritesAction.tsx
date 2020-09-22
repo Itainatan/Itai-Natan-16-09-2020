@@ -10,8 +10,23 @@ import {
 } from '../Types'
 
 
+// Interfaces
+interface CityType {
+    cityInfo: CityInfoType
+}
+
+interface FavoriteType {
+    cityInfo: CityInfoType
+}
+
+interface CityInfoType {
+    Key?: string,
+    LocalizedName: string
+}
+
+
 // Actions
-export const favoritesAction = (city: any, add: boolean) => (dispatch: any) => {
+export const favoritesAction = (city: CityType, add: boolean) => (dispatch: any) => {
 
     if (!add) {
         dispatch({
@@ -52,7 +67,7 @@ export const favoritesAction = (city: any, add: boolean) => (dispatch: any) => {
     }
 }
 
-export const setFavorites = (favorites: any) => {
+export const setFavorites = (favorites: Array<FavoriteType>) => {
     return {
         type: SET_FAVORITES,
         payload: favorites
@@ -76,7 +91,7 @@ export const fetchFavoritesWeather = (favorites: any) => async (dispatch: any) =
             type: SET_FAVORITES_WEATHER,
             payload: res.map((favoriteWeather, index) => { return { ...favorites[index], todayWeather: favoriteWeather.data[0] } })
         })
-        
+
         dispatch(fetchFavoritesWeatherLoading(false))
     }
     catch (e) {

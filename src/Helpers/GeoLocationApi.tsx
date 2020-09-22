@@ -47,7 +47,6 @@ const GeoLocation = () => {
         console.warn(`ERROR(${err.code}): ${err.message}`)
     }
 
-
 }
 
 export default GeoLocation

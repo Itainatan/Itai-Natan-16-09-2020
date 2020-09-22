@@ -2,6 +2,13 @@
 import { SET_WEATHER_BY_KEY, LOADING_WEATHER_BY_KEY, ERROR_WEATHER_BY_KEY } from '../Types'
 
 
+// Interfaces
+interface ActionType {
+    payload: object | boolean,
+    type: string
+}
+
+
 // Consts
 const initialState = {
     data: null,
@@ -11,7 +18,7 @@ const initialState = {
 
 
 // Reducers
-export default function (state = initialState, action: any) {
+export default function (state = initialState, action: ActionType) {
     switch (action.type) {
         case SET_WEATHER_BY_KEY:
             return {

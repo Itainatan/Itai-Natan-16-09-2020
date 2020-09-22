@@ -1,6 +1,6 @@
 // Consts
 const BASE_URL = "https://dataservice.accuweather.com"
-const API_KEY = "lriSh0MgYPuwlv7Hf3Zy1OJ0XzO3ZezC"
+const API_KEY = "lpaF8dfWGrM9XzI2cblh0BRWp6qmnT9g"
 
 
 // Interfaces
