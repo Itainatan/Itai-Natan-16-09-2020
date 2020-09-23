@@ -42,7 +42,7 @@ export const currentCityAction = (city: any) => async (dispatch: any) => {
         }))
 
         dispatch(currentCityError(err))
-        
+
         dispatch(currentCityLoading(false))
     }
 }

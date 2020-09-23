@@ -1,16 +1,10 @@
-//
+// Imports
 import { CoordsType } from './Interfaces'
+
 
 // Consts
 const BASE_URL = "https://dataservice.accuweather.com"
 const API_KEY = "lriSh0MgYPuwlv7Hf3Zy1OJ0XzO3ZezC"
-
-
-// Interfaces
-interface propsType {
-    Latitude: number,
-    Longitude: number
-}
 
 
 // Routes
