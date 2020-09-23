@@ -14,7 +14,7 @@ export const geoPositionSearch = (crd: CoordsType, isDefaultLocation: boolean) =
         dispatch(geoPositionSearchLoading(true))
 
         try {
-            const res = await axios.get(geoPositionSearchAPI({ Latitude: crd.latitude, Longitude: crd.longitude }))
+            const res = await axios.get(geoPositionSearchAPI({ latitude: crd.latitude, longitude: crd.longitude }))
 
             dispatch({
                 type: SET_GEO_POSITION_KEY,
