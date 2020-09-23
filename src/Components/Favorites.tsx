@@ -12,45 +12,13 @@ import {
     CityAndTempStyle, Image, FavoriteItem, FavoriteItemWrapper, FavoriteTitle,
     FavoritesPage, ImageAndStatus, PageHeadline, NoFavoritesStyle, FavoritesWrapper
 } from './Style/FavoritesStyle'
+import { FavoritesType, FavoriteType, DegreeType } from '../Helpers/Interfaces'
 
 
 // Interfaces
 interface StateType {
     degreeType: DegreeType,
     favorites: FavoritesType
-}
-
-interface DegreeType {
-    isCelsius: boolean
-}
-
-interface FavoritesType {
-    data: Array<FavoriteType>,
-    loading: boolean
-}
-
-interface FavoriteType {
-    cityInfo: CityInfoType,
-    todayWeather: TodayWeatherType
-}
-
-interface CityInfoType {
-    LocalizedName: string
-}
-
-interface TodayWeatherType {
-    Temperature: TemperatureType,
-    WeatherText: string,
-    WeatherIcon: number
-}
-
-interface TemperatureType {
-    Metric: MetricImperialType,
-    Imperial: MetricImperialType
-}
-
-interface MetricImperialType {
-    Value: number
 }
 
 

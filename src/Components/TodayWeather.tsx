@@ -9,6 +9,7 @@ import {
     TodayWeatherStyle, CityAndTempStyle, CityName, StickySide,
     IconStyle, ImageAndStatus, WeatherStatus, Image
 } from './Style/TodayWeatherStyle'
+import { CurrentCityType, FavoriteType, DegreeType } from '../Helpers/Interfaces'
 
 
 interface PropsType {
@@ -19,40 +20,6 @@ interface PropsType {
 interface StateType {
     degreeType: DegreeType
 }
-
-interface CurrentCityType {
-    todayWeather: TodayWeatherrType,
-    cityInfo: CityInfoType
-}
-
-interface TodayWeatherrType {
-    Temperature: TemperatureType,
-    WeatherText: string,
-    WeatherIcon: number
-}
-
-interface TemperatureType {
-    Metric: MetricImperialType,
-    Imperial: MetricImperialType
-}
-
-interface MetricImperialType {
-    Value: number
-}
-
-interface FavoriteType {
-    cityInfo: CityInfoType
-}
-
-interface CityInfoType {
-    Key: string,
-    LocalizedName: string
-}
-
-interface DegreeType {
-    isCelsius: boolean
-}
-
 
 
 // Component - diplay the info about the city, the favorite button and the today weather

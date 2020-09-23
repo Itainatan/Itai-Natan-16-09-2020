@@ -4,16 +4,12 @@ import { useSelector } from 'react-redux'
 import CurrentCityWeather from './CurrentCityWeather'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { SpinnerWrapper, SpinnerText } from './Style/HomeStyle'
+import { CurrentCityType } from '../Helpers/Interfaces'
 
 
 // Interfaces
 interface StateType {
     currentCity: CurrentCityType,
-}
-
-interface CurrentCityType {
-    data: Object,
-    loading: boolean
 }
 
 

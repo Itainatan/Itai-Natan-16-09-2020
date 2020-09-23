@@ -8,25 +8,11 @@ import {
     ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SET_FAVORITES, LOADING_FAVORITES_WAETHER,
     SET_FAVORITES_WEATHER, ERROR_FAVORITES_WAETHER
 } from '../Types'
-
-
-// Interfaces
-interface CityType {
-    cityInfo: CityInfoType
-}
-
-interface FavoriteType {
-    cityInfo: CityInfoType
-}
-
-interface CityInfoType {
-    Key?: string,
-    LocalizedName: string
-}
+import { FavoriteType } from '../../Helpers/Interfaces'
 
 
 // Actions
-export const favoritesAction = (city: CityType, add: boolean) => (dispatch: any) => {
+export const favoritesAction = (city: FavoriteType, add: boolean) => (dispatch: any) => {
 
     if (!add) {
         dispatch({

@@ -2,16 +2,12 @@
 import store from "../Store/Store"
 import { SET_GEO_LOCATION, LOADING_GEO_LOCATION, ERROR_GEO_LOCATION } from '../Store/Types'
 import { geoPositionSearch } from '../Store/actions/GeoPositionAction'
+import { CoordsType } from '../Helpers/Interfaces'
 
 
 // Interfaces
 interface PosType {
     coords: CoordsType
-}
-
-interface CoordsType {
-    latitude: number,
-    longitude: number
 }
 
 

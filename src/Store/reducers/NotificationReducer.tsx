@@ -1,5 +1,6 @@
 // Imports
 import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from '../Types'
+import { NotificationType } from '../../Helpers/Interfaces'
 
 
 // Interfaces
@@ -8,11 +9,6 @@ interface ActionType {
     dismissAll: boolean,
     key: string,
     notification: NotificationType
-}
-
-interface NotificationType {
-    key: string,
-    options: Object
 }
 
 

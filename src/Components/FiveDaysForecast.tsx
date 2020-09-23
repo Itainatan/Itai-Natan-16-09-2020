@@ -3,41 +3,16 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { convertToC } from '../Helpers/Converts'
 import { ScrollWrapper, FiveDaysForecastStyle, DayStyle, DayStyleLineHeader, DayStyleLine, KeyStyle } from './Style/FiveDaysForecastStyle'
+import { DegreeType, CurrentCityType, WeatherItemType } from '../Helpers/Interfaces'
 
 
 // Interfaces
-interface StateType {
-    degreeType: DegreeType,
-}
-
-interface DegreeType {
-    isCelsius: boolean
-}
-
 interface PropsType {
     currentCity: CurrentCityType
 }
 
-interface CurrentCityType {
-    fiveDayaWeather: FiveDayaWeatherType
-}
-
-interface FiveDayaWeatherType {
-    DailyForecasts: Array<WeatherItemType>
-}
-
-interface WeatherItemType {
-    Date: Date,
-    Temperature: TemperatureType
-}
-
-interface TemperatureType {
-    Maximum: MaxMinType,
-    Minimum: MaxMinType
-}
-
-interface MaxMinType {
-    Value: number
+interface StateType {
+    degreeType: DegreeType,
 }
 
 

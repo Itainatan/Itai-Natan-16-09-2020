@@ -4,68 +4,13 @@ import { useSelector } from 'react-redux'
 import TodayWeather from './TodayWeather'
 import FiveDaysForecast from './FiveDaysForecast'
 import { CurrentCityWeatherStyle } from './Style/CurrentCityWeatherStyle'
+import { CurrentCityDataType, FavoritesType } from '../Helpers/Interfaces'
 
 
 // Interfaces
 interface StateType {
-    currentCity: CurrentCityType,
+    currentCity: CurrentCityDataType,
     favorites: FavoritesType
-}
-
-interface FavoritesType {
-    data: Array<FavoriteType>
-}
-
-interface FavoriteType {
-    cityInfo: CityInfoType
-}
-
-interface CurrentCityType {
-    data: DataType,
-}
-
-interface DataType {
-    fiveDayaWeather: FiveDayaWeatherType,
-    todayWeather: TodayWeatherrType,
-    cityInfo: CityInfoType
-}
-
-interface FiveDayaWeatherType {
-    DailyForecasts: Array<WeatherItemType>
-}
-
-interface WeatherItemType {
-    Date: Date,
-    Temperature: TemperatureType
-}
-
-interface TemperatureType {
-    Maximum: MaxMinType,
-    Minimum: MaxMinType
-}
-
-interface MaxMinType {
-    Value: number
-}
-
-interface TodayWeatherrType {
-    Temperature: TemperatureType,
-    WeatherText: string,
-    WeatherIcon: number
-}
-
-interface TemperatureType {
-    Metric: MetricImperialType,
-    Imperial: MetricImperialType
-}
-
-interface MetricImperialType {
-    Value: number
-}
-
-interface CityInfoType {
-    Key: string,
-    LocalizedName: string
 }
 
 

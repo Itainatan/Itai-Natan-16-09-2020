@@ -3,13 +3,7 @@ import { geoPositionSearch as geoPositionSearchAPI } from '../../Helpers/ApiMap'
 import { currentCityAction } from './CurrentCityAction'
 import { SET_GEO_POSITION_KEY, LOADING_GEO_POSITION_KEY, ERROR_GEO_POSITION_KEY } from '../Types'
 import axios from 'axios'
-
-
-// Interfaces
-interface CoordsType {
-    latitude: number,
-    longitude: number
-}
+import { CoordsType } from '../../Helpers/Interfaces'
 
 
 // Actions

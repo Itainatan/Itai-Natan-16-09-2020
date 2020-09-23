@@ -9,19 +9,12 @@ import { enqueueSnackbar, closeSnackbar } from '../../Store/actions/Notification
 import Button from '@material-ui/core/Button'
 import { SpinnerWrapper, SearchInput } from '../Style/SearchBarStyle'
 import CitiesList from './CitiesList'
+import { AutoCompleteType, CityInfoType } from '../../Helpers/Interfaces'
 
 
 // Interfaces
 interface StateType {
     autoComplete: AutoCompleteType
-}
-
-interface AutoCompleteType {
-    loading: boolean
-}
-
-interface CityType {
-    LocalizedName: string
 }
 
 
@@ -35,7 +28,7 @@ const SearchBar = () => {
 
 
     // Actions
-    const onSelect = (city: CityType) => {
+    const onSelect = (city: CityInfoType) => {
         setQuery(city.LocalizedName)
         setIsOpen(false)
         dispatch(currentCityAction(city))

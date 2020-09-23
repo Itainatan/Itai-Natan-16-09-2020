@@ -3,26 +3,12 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack'
 import { removeSnackbar } from '../../Store/actions/NotificationAction'
+import { NotificationsType } from '../../Helpers/Interfaces'
 
 
 // Interfaces
 interface StateType {
-    notifications: Notifications
-}
-
-interface Notifications {
-    notifications: Array<NotificationsType>
-}
-
-interface NotificationsType {
-    key: string,
-    message: React.ReactNode,
-    options: OptionsType,
-    dismissed: boolean
-}
-
-interface OptionsType {
-    onClose: Function
+    notifications: NotificationsType
 }
 
 
@@ -48,7 +34,7 @@ const Notifier = () => {
 
     // Actions
     useEffect(() => {
-        notifications.forEach(({ key, message, options = { }, dismissed = false }: any) => {
+        notifications.forEach(({ key, message, options = {}, dismissed = false }: any) => {
             if (dismissed) {
                 // dismiss snackbar using notistack
                 closeSnackbar(key)
